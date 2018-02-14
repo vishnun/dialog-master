@@ -2,12 +2,45 @@ var accessToken = "b1d48c914861411b879a5ba255910d79";
 var baseUrl = "https://api.api.ai/v1/";
 
 $(document).ready(function() {
+  var keysdown = {};
   $("#input").keypress(function(event) {
     if (event.which == 13) {
       event.preventDefault();
       send();
     }
   });
+
+  // $('body').keydown(function(event) {
+  //   // Do we already know it's down?
+  //   if (keysdown[event.which]) {
+  //     // Ignore it
+  //     return;
+  //   }
+  //
+  //   // Remember it's down
+  //   keysdown[event.which] = true;
+  //
+  //   console.log("down: " + event.which);
+  //   if (event.which == 32) {
+  //     event.preventDefault();
+  //     switchRecognition();
+  //   }
+  // });
+  // $('body').keyup(function(event) {
+  //   if (event.which == 32) {
+  //     event.preventDefault();
+  //     delete keysdown[event.which];
+  //     switchRecognition();
+  //   }
+  // });
+
+  $('body').keypress(function(event) {
+    if (event.which == 32) {
+      event.preventDefault();
+      switchRecognition();
+    }
+  });
+
   $("#rec").click(function(event) {
     switchRecognition();
   });
