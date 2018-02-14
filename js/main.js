@@ -47,9 +47,21 @@ $(document).ready(function() {
 });
 
 var recognition;
+var SpeechGrammarList;
 
 function startRecognition() {
   recognition = new webkitSpeechRecognition();
+  SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList
+
+
+  // Adding grammar
+  var fillers = ["huh", "uh", "erm", "um", "well", "so", "like", "eh"];
+  var grammar = '#JSGF V1.0; grammar fillers; public <filler> = ' + fillers.join(' | ') + ' ;'
+  var speechRecognitionList = new SpeechGrammarList();
+  speechRecognitionList.addFromString(grammar, 1);
+  recognition.grammars = speechRecognitionList;
+  // -- end grammar 
+
 
   recognition.onstart = function(event) {
     updateRec();
