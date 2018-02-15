@@ -1,4 +1,4 @@
-var accessToken = "b1d48c914861411b879a5ba255910d79";
+var accessToken = "0e7068a854c74fb9899811e05665257e";
 var baseUrl = "https://api.api.ai/v1/";
 
 $(document).ready(function() {
@@ -60,7 +60,7 @@ function startRecognition() {
   var speechRecognitionList = new SpeechGrammarList();
   speechRecognitionList.addFromString(grammar, 1);
   recognition.grammars = speechRecognitionList;
-  // -- end grammar 
+  // -- end grammar
 
 
   recognition.onstart = function(event) {
