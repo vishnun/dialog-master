@@ -1,4 +1,4 @@
-var accessToken = "0e7068a854c74fb9899811e05665257e";
+var accessToken = "5527d5118ced47aba88528e6760fdae4";
 var baseUrl = "https://api.api.ai/v1/";
 
 $(document).ready(function() {
@@ -98,8 +98,18 @@ function switchRecognition() {
   }
 }
 
+function setParticipantInput(text) {
+  var data = {
+    "message": text
+  };
+  var html = tmpl("participant-template", data);
+  $('#transcript').append(html);
+
+}
+
 function setInput(text) {
   $("#input").val(text);
+  setParticipantInput(text);
   send();
 }
 
@@ -126,18 +136,33 @@ function send() {
     success: function(data) {
       setData(JSON.stringify(data, undefined, 2));
       response = data['result']['fulfillment']['speech']
+      setResponse(response);
       speakResponse(response);
-      setResponse(JSON.stringify(response, undefined, 2));
     },
     error: function() {
       setResponse("Internal Server Error");
     }
   });
-  setResponse("Loading...");
+  setLoadingResponse("Loading...");
 }
 
 function setResponse(val) {
+  $('#transcript').find(".loading").remove();
+  var data = {
+    "message": val
+  };
+  var html = tmpl("agent-template", data);
+  $('#transcript').append(html);
   $("#response").text(val);
+}
+
+function setLoadingResponse(val) {
+  var data = {
+    "message": val,
+    "loadingClass": "loading"
+  };
+  var html = tmpl("agent-template", data);
+  $('#transcript').append(html);
 }
 
 function setData(val) {
