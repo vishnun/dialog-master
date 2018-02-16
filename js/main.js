@@ -34,6 +34,25 @@ $(document).ready(function() {
   //   }
   // });
 
+  function formatDate(date) {
+    var monthNames = [
+      "January", "February", "March",
+      "April", "May", "June", "July",
+      "August", "September", "October",
+      "November", "December"
+    ];
+
+    var day = date.getDate();
+    var monthIndex = date.getMonth();
+    var year = date.getFullYear();
+
+    return day + ' ' + monthNames[monthIndex] + ' ' + year;
+  }
+
+  var dateInfo = formatDate(new Date());
+
+  $('#day-info').html(dateInfo);
+
   $('body').keypress(function(event) {
     if (event.which == 32) {
       event.preventDefault();
@@ -134,8 +153,12 @@ function send() {
     }),
 
     success: function(data) {
+      // console.log(data);
       setData(JSON.stringify(data, undefined, 2));
       response = data['result']['fulfillment']['speech']
+      if (response == "") {
+        response = data['result']['fulfillment']['messages'][1]['speech'];
+      }
       setResponse(response);
       speakResponse(response);
     },
