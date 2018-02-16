@@ -1,4 +1,4 @@
-var accessToken = "5527d5118ced47aba88528e6760fdae4";
+var accessToken = "0e7068a854c74fb9899811e05665257e";
 var baseUrl = "https://api.api.ai/v1/";
 
 $(document).ready(function() {
