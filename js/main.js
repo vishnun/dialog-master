@@ -1,38 +1,44 @@
 var accessToken = "0e7068a854c74fb9899811e05665257e";
 var baseUrl = "https://api.api.ai/v1/";
 
+// https://drive.google.com/file/d/1trRg7ny-uINSBynubEJPlCyFUDS1pyTF/preview
 $(document).ready(function() {
-  var keysdown = {};
+
+  $('#view-transcript').on('click', function() {
+    $('#transcript').show();
+  });
+
+  $('#hide-transcript').on('click', function() {
+    $('#transcript').hide();
+  });
+
+  $('#hide-transcript-bottom').on('click', function() {
+    $('#transcript').hide();
+  });
+
+  var fileInput = $('#fileInput');
+  var fileDisplayArea = $('#fileDisplayArea');
+
+  fileInput.on('change', function(e) {
+    var file = fileInput[0].files[0];
+    var textType = /text.*/;
+    if (file.type.match(textType)) {
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        fileDisplayArea.html(reader.result);
+      }
+      reader.readAsText(file);
+    } else {
+      fileDisplayArea.html("File type not supported!");
+    }
+  });
+
   $("#input").keypress(function(event) {
     if (event.which == 13) {
       event.preventDefault();
       send();
     }
   });
-
-  // $('body').keydown(function(event) {
-  //   // Do we already know it's down?
-  //   if (keysdown[event.which]) {
-  //     // Ignore it
-  //     return;
-  //   }
-  //
-  //   // Remember it's down
-  //   keysdown[event.which] = true;
-  //
-  //   console.log("down: " + event.which);
-  //   if (event.which == 32) {
-  //     event.preventDefault();
-  //     switchRecognition();
-  //   }
-  // });
-  // $('body').keyup(function(event) {
-  //   if (event.which == 32) {
-  //     event.preventDefault();
-  //     delete keysdown[event.which];
-  //     switchRecognition();
-  //   }
-  // });
 
   function formatDate(date) {
     var monthNames = [
@@ -62,6 +68,12 @@ $(document).ready(function() {
 
   $("#rec").click(function(event) {
     switchRecognition();
+  });
+
+  $('#start-button').on('click', function() {
+    send("Hi");
+    $(this).hide();
+    $('#user-input-container').show();
   });
 });
 
@@ -136,8 +148,8 @@ function updateRec() {
   $("#rec").text(recognition ? "Stop" : "Speak");
 }
 
-function send() {
-  var text = $("#input").val();
+function send(txt) {
+  var text = $("#input").val() || txt;
   $.ajax({
     type: "POST",
     url: baseUrl + "query?v=20150910",

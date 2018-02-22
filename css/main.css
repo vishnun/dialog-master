@@ -5,3 +5,15 @@
 .bg-agent {
   background-color: #eaeaea;
 }
+
+#task-container {
+  height: 200px;
+}
+
+#user-input-container {
+  display: none;
+}
+
+#transcript {
+  display: none;
+}

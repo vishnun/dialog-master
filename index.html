@@ -1,7 +1,7 @@
 <html>
 
 <head>
-  <title>API Example</title>
+  <title>Dialog Master</title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
   <link rel="icon" type="image/x-icon" class="js-site-favicon" href="https://assets-cdn.github.com/favicon.ico">
@@ -22,15 +22,25 @@
   <div class="container">
 
     <div class="pos-f-t">
-      <div class="collapse" id="navbarToggleExternalContent">
+      <div class="collapse" id="navbar-menu-container">
         <div class="bg-dark p-4">
           <h4 class="text-white">Admin</h4>
-          <span class="text-muted">Setting up the conversation</span>
-          <a class="btn btn-outline-info btn-sm" href="#" role="button">Setup</a>
+
+          <div class="menu-item mb-4">
+            <span class="text-muted">Show the Transcript of Dialog</span>
+            <button class="btn btn-outline-info btn-sm" id="view-transcript" role="button">View</button>
+            <button class="btn btn-outline-info btn-sm" id="hide-transcript" role="button">Hide</button>
+          </div>
+
+          <div class="menu-item mb-4">
+            <span class="text-muted">Setting up the conversation</span>
+            <a class="btn btn-outline-info btn-sm" href="#" role="button">Setup</a>
+          </div>
+
         </div>
       </div>
       <nav class="navbar navbar-dark bg-dark">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu-container" aria-controls="navbar-menu-container" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <a class="navbar-brand" href="#">Chilab</a>
@@ -50,22 +60,36 @@
       </blockquote>
     </div>
 
+    <div class="pdf-selection mt-4">
 
-    <div class="chat-transcript" id="transcript">
-      <div class="d-flex flex-row">
-        <div class="p-2"><strong>Agent</strong></div>
-        <div class="p-2 bg-agent">
-          <p>You may begin by saying "Hi"</p>
+      <div class="input-group mb-3">
+        <div class="custom-file">
+          <input type="file" class="custom-file-input" id="fileInput">
+          <label class="custom-file-label" for="fileInput">Choose a text file (.txt only)</label>
         </div>
       </div>
     </div>
 
-    <div class="action pt-5 mt-5 border-dark border-top">
+    <div id="task-container" class="mt-4 mb-4 pl-3">
+      <pre id="fileDisplayArea"><pre>
+    </div>
+
+    <div class="start-button text-center">
+      <button type="button" id="start-button" class="btn btn-outline-primary">Start</button>
+    </div>
+
+    <div id="user-input-container" class="action pt-5 mt-5 border-dark border-top">
       <div class="input-group mb-3">
         <div class="input-group-prepend">
           <button class="btn btn-outline-primary" id="rec" type="button">Speak</button>
         </div>
         <input type="text" readonly class="form-control" id="input" placeholder="Click the button and speak your response." aria-label="" aria-describedby="basic-addon1">
+      </div>
+    </div>
+
+    <div class="chat-transcript mt-5" id="transcript">
+      <div class="text-center">
+        <button type="button" id="hide-transcript-bottom" class="btn btn-secondary" name="button">Hide transcript</button>
       </div>
     </div>
   </div>
