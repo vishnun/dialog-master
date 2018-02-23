@@ -1,8 +1,12 @@
-var accessToken = "0e7068a854c74fb9899811e05665257e";
+var accessToken = "f52cfe54fd7f4c7a90cd187d915629b1";
 var baseUrl = "https://api.api.ai/v1/";
 
+var recognition;
+var SpeechGrammarList;
+var $userInputEl;
 // https://drive.google.com/file/d/1trRg7ny-uINSBynubEJPlCyFUDS1pyTF/preview
-$(document).ready(function() {
+$(document).ready(function() {  
+  $userInputEl = $("#input");
 
   $('#view-transcript').on('click', function() {
     $('#transcript').show();
@@ -33,7 +37,7 @@ $(document).ready(function() {
     }
   });
 
-  $("#input").keypress(function(event) {
+  $userInputEl.keypress(function(event) {
     if (event.which == 13) {
       event.preventDefault();
       send();
@@ -77,13 +81,10 @@ $(document).ready(function() {
   });
 });
 
-var recognition;
-var SpeechGrammarList;
 
 function startRecognition() {
   recognition = new webkitSpeechRecognition();
-  SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList
-
+  SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList;
 
   // Adding grammar
   var fillers = ["huh", "uh", "erm", "um", "well", "so", "like", "eh"];
@@ -139,7 +140,10 @@ function setParticipantInput(text) {
 }
 
 function setInput(text) {
-  $("#input").val(text);
+  $userInputEl.val(text);
+  setTimeout(function() {
+    $userInputEl.val('');
+  }, 2000);
   setParticipantInput(text);
   send();
 }
@@ -149,7 +153,7 @@ function updateRec() {
 }
 
 function send(txt) {
-  var text = $("#input").val() || txt;
+  var text = $userInputEl.val() || txt;
   $.ajax({
     type: "POST",
     url: baseUrl + "query?v=20150910",
