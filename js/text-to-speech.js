@@ -51,7 +51,7 @@ if (speechSynthesis !== undefined) {
 			}
 		}
 
-		if (not params.voice) {
+		if (!params.voice) {
 			params.voice = voices[1];
 		}
 
