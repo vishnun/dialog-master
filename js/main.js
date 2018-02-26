@@ -5,7 +5,7 @@ var recognition;
 var SpeechGrammarList;
 var $userInputEl;
 // https://drive.google.com/file/d/1trRg7ny-uINSBynubEJPlCyFUDS1pyTF/preview
-$(document).ready(function() {  
+$(document).ready(function() {
   $userInputEl = $("#input");
 
   $('#view-transcript').on('click', function() {
@@ -18,6 +18,10 @@ $(document).ready(function() {
 
   $('#hide-transcript-bottom').on('click', function() {
     $('#transcript').hide();
+  });
+
+  $('#client-id-update-btn').on('click', function() {
+    accessToken = $('#client-id-input').val();
   });
 
   var fileInput = $('#fileInput');

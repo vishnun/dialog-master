@@ -27,14 +27,47 @@
           <h4 class="text-white">Admin</h4>
 
           <div class="menu-item mb-4">
-            <span class="text-muted">Show the Transcript of Dialog</span>
-            <button class="btn btn-outline-info btn-sm" id="view-transcript" role="button">View</button>
-            <button class="btn btn-outline-info btn-sm" id="hide-transcript" role="button">Hide</button>
+            <div class="row">
+              <div class="col-sm-8 col-12 col-md-4 col-lg-3">
+                <span class="text-muted menu-text">Show the Transcript of Dialog</span>
+              </div>
+              <div class="col-6 col-sm-2 col-md-2 pr-0">
+                <button class="btn btn-outline-info btn-block" id="view-transcript" role="button">View</button>
+              </div>
+              <div class="col-6 col-sm-2 col-md-2 pr-0">
+                <button class="btn btn-outline-info btn-block" id="hide-transcript" role="button">Hide</button>
+              </div>
+            </div>
           </div>
 
           <div class="menu-item mb-4">
-            <span class="text-muted">Setting up the conversation</span>
-            <a class="btn btn-outline-info btn-sm" href="#" role="button">Setup</a>
+            <div class="row">
+              <div class="col-sm-8 col-9 col-md-4 col-lg-3">
+                <span class="text-muted menu-text">Setting up the conversation</span>
+              </div>
+              <div class="col-3 col-sm-2 col-md-2 pr-0">
+                <a class="btn btn-outline-info btn-block" data-toggle="collapse" href="#collapse-client-id-form" role="button" aria-controls="collapse-client-id-form">Setup</a>
+              </div>
+              <div class="col-12 col-md-6 col-lg-6">
+                <div class="collapse" id="collapse-client-id-form">
+                  <div class="d-flex">
+                    <div class="input-group">
+                      <input type="text" class="form-control" id="client-id-input" placeholder="Enter the client id." aria-label="" aria-describedby="basic-addon1">
+                      <div class="input-group-append">
+                        <button class="btn btn-outline-success" id="client-id-update-btn" data-toggle="collapse" data-target="#collapse-client-id-form" aria-controls="collapse-client-id-form" type="button">Update</button>
+                      </div>
+                    </div>
+                    <div>
+                      <a target="_blank" class="btn btn-link" href="https://docs.google.com/document/d/1NH9teq6uZP_xwjiXcJg27xzdctMShLarP0Gyn6TnzG8/edit?usp=sharing">
+                        Whats this?
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
           </div>
 
         </div>
@@ -75,7 +108,7 @@
     </div>
 
     <div class="start-button text-center">
-      <button type="button" id="start-button" class="btn btn-outline-primary">Start</button>
+      <button type="button" id="start-button" class="btn btn-primary pl-5 pr-5">Start</button>
     </div>
 
     <div id="user-input-container" class="action pt-5 mt-5 border-dark border-top">
