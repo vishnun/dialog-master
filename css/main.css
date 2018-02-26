@@ -17,3 +17,64 @@
 #transcript {
   display: none;
 }
+
+
+
+/* PDF loader related styles --- START */
+
+#pdf-loader {
+	display: none;
+	text-align: center;
+	color: #999999;
+	font-size: 13px;
+	line-height: 100px;
+	height: 100px;
+}
+
+#pdf-contents {
+	display: none;
+}
+
+
+#pdf-buttons {
+	float: left;
+}
+
+
+
+#page-count-container {
+	float: right;
+}
+
+#pdf-current-page {
+	display: inline;
+}
+
+#pdf-total-pages {
+	display: inline;
+}
+
+
+#page-loader {
+	height: 100px;
+	line-height: 100px;
+	text-align: center;
+	display: none;
+	color: #999999;
+	font-size: 13px;
+}
+
+
+#pdf-main-container {
+	width: 800px;
+	margin: 20px auto;
+}
+
+.canvas-container {
+  border: 1px solid rgba(0,0,0,0.2);
+  max-height: 520px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* PDF loader related styles --- END */
