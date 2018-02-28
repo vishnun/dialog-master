@@ -22,6 +22,7 @@ $(document).ready(function() {
 
   $('#client-id-update-btn').on('click', function() {
     accessToken = $('#client-id-input').val();
+    resetAll();
   });
 
   var fileInput = $('#fileInput');
@@ -83,8 +84,21 @@ $(document).ready(function() {
     $(this).hide();
     $('#user-input-container').show();
   });
+
+  $('#reset-button').on('click', function() {
+    var confirm = window.confirm("This action will clear all the chat transcript and current progress. Are you sure?");
+    if (confirm == true) {
+        resetAll();
+    }
+  });
 });
 
+function resetAll() {
+  $('#user-input-container').hide();
+  $('#pdf-main-container').hide();
+  $('#transcript').find('.chat-item').remove().hide();
+  $('#start-button').show();
+}
 
 function startRecognition() {
   recognition = new webkitSpeechRecognition();
