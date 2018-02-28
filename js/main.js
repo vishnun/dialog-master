@@ -96,7 +96,7 @@ $(document).ready(function() {
 function resetAll() {
   $('#user-input-container').hide();
   $('#pdf-main-container').hide();
-  $('#transcript').find('.chat-item').remove().hide();
+  $('#transcript').hide().find('.chat-item').remove();
   $('#start-button').show();
 }
 
