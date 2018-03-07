@@ -97,27 +97,11 @@
       </blockquote>
     </div>
 
-    <!-- Left here for reference. Temporary. TODO: remove this soon -->
-    <div class="pdf-selection mt-4 no-print d-none">
-
-      <div class="input-group mb-3">
-        <div class="custom-file">
-          <input type="file" class="custom-file-input" id="fileInput">
-          <label class="custom-file-label" for="fileInput">Choose a text file (.txt only)</label>
-        </div>
-      </div>
-    </div>
-
-    <div id="task-container" class="mt-4 mb-4 pl-3 d-none no-print">
-      <pre id="fileDisplayArea"><pre>
-    </div>
-    <!-- Remove till here -->
-
     <div class="pdf-selection mt-4 no-print">
       <div class="input-group mb-3">
         <div class="custom-file">
-          <input type="file" accept="application/pdf" class="custom-file-input" id="file-to-upload">
-          <label class="custom-file-label" for="fileInput">Choose a pdf file</label>
+          <input type="file" accept="application/pdf" class="custom-file-input" id="file-to-upload" name="file-to-upload">
+          <label class="custom-file-label" for="file-to-upload">Choose a pdf file</label>
         </div>
       </div>
     </div>
@@ -206,7 +190,7 @@
 
   		// Hide the pdf loader and show pdf container in HTML
   		$("#pdf-loader").hide();
-  		$("#pdf-contents").show();
+  		$("#pdf-main-container").show();
   		$("#pdf-total-pages").text(__TOTAL_PAGES);
 
   		// Show the first page
