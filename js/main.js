@@ -98,6 +98,7 @@ function resetAll() {
   $('#pdf-main-container').hide();
   $('#transcript').hide().find('.chat-item').remove();
   $('#start-button').show();
+  clearFileInput($("#file-to-upload")[0]);
 }
 
 function startRecognition() {
@@ -164,6 +165,16 @@ function setInput(text) {
   }, 2000);
   setParticipantInput(text);
   send();
+}
+
+
+function clearFileInput(ctrl) {
+  try {
+    ctrl.value = null;
+  } catch(ex) { }
+  if (ctrl.value) {
+    ctrl.parentNode.replaceChild(ctrl.cloneNode(true), ctrl);
+  }
 }
 
 function updateRec() {
